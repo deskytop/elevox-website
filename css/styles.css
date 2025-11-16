@@ -1,0 +1,80 @@
+/* ===================================
+   PROJETO ELEVOX - ESTILOS PRINCIPAIS
+   =================================== */
+
+/* Estilos base (Tema Claro) */
+body {
+    background-color: var(--tw-bg-light);
+    color: var(--tw-text-primary);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Canvas 3D */
+#elevox-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* Efeito de fundo Aurora (com o novo azul) */
+.aurora-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    /* Cor HSL(242, 69%, 43%) é ~ #281dc2 */
+    background-image: radial-gradient(at 20% 80%, hsla(242, 69%, 43%, 0.1) 0px, transparent 50%),
+                      radial-gradient(at 80% 20%, hsla(242, 69%, 43%, 0.15) 0px, transparent 50%),
+                      radial-gradient(at 70% 80%, hsla(242, 69%, 43%, 0.1) 0px, transparent 50%);
+    filter: blur(50px);
+}
+
+/* Header com Glassmorphism (Versão Clara) */
+.header-glass {
+    background-color: rgba(255, 255, 255, 0.7); /* Fundo branco semitransparente */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Borda escura sutil */
+}
+
+/* Animação de Revelação de Seção */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Texto em Gradiente (Agora com o azul vibrante) */
+.gradient-text {
+    background-image: linear-gradient(to right, #281dc2, #201799);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* Cartão "Clean" (Tema Claro) */
+.tech-card {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08); /* Borda sutil */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+    border-color: rgba(40, 29, 194, 0.7); /* brand-blue */
+    transform: translateY(-5px);
+    /* Sombra azul sutil */
+    box-shadow: 0 10px 30px rgba(40, 29, 194, 0.1);
+}

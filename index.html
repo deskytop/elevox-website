@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevox - Página Inicial</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Three.js (3D Library) CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Configuração do Tailwind -->
+    <script src="js/tailwind-config.js"></script>
+
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="relative bg-bg-light text-text-primary">
+    
+    <!-- Fundo Aurora -->
+    <div class="aurora-background"></div>
+
+    <!-- Canvas 3D para o Hero -->
+    <canvas id="elevox-canvas"></canvas>
+
+    <!-- Header -->
+    <header id="header" class="header-glass fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold gradient-text">
+                Projeto Elevox
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#projeto" class="text-text-secondary hover:text-text-primary transition-colors">O Projeto</a>
+                <a href="#tecnologia" class="text-text-secondary hover:text-text-primary transition-colors">Tecnologia</a>
+                <a href="#melhorias" class="text-text-secondary hover:text-text-primary transition-colors">Melhorias Futuras</a>
+                <a href="#equipe" class="text-text-secondary hover:text-text-primary transition-colors">Equipe</a>
+                <a href="#contato" class="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2 rounded-md transition-colors">Contato</a>
+            </div>
+            <!-- Botão Menu Móvel (simples) -->
+            <div class="md:hidden">
+                <button class="text-text-primary focus:outline-none"> <!-- Cor do ícone mudou -->
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        
+        <!-- Seção Hero -->
+        <section id="home" class="h-screen flex items-center justify-center relative z-10 px-6 text-center">
+            <div class="flex flex-col items-center max-w-3xl">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6" style="animation: fadeInUp 1s ease-out forwards;">
+                    <span class="gradient-text">Revolucionando a</span>
+                    <span class="block text-brand-blue">Acessibilidade</span>
+                </h1>
+                <p class="text-lg md:text-xl text-text-secondary mb-10 max-w-xl" style="animation: fadeInUp 1.2s ease-out forwards; animation-delay: 0.2s;">
+                    O Elevox é um elevador inteligente que integra comandos de voz e app móvel para garantir autonomia e inclusão a pessoas com deficiência.
+                </p>
+                <div style="animation: fadeInUp 1.4s ease-out forwards; animation-delay: 0.4s;">
+                    <a href="#projeto" class="bg-gradient-to-r from-brand-blue to-brand-blue-dark text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-brand-blue/30 transition-all duration-300 transform hover:scale-105">
+                        Conheça o Projeto
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Projeto (Missão) -->
+        <section id="projeto" class="py-20 md:py-32 relative z-10 container mx-auto px-6 reveal-section">
+            <div class="max-w-xl mx-auto text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Nossa Missão: Inclusão Real</h2>
+                <p class="text-lg text-text-secondary">
+                    No Brasil, milhões de pessoas enfrentam barreiras de acessibilidade. Elevadores convencionais são um desafio. Nossa missão é quebrar essas barreiras com uma solução de baixo custo, adaptável e centrada no usuário.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="tech-card p-8 rounded-2xl">
+                    <!-- Icon: Mic (SVG) -->
+                    <svg class="w-12 h-12 text-brand-blue mb-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                    <h3 class="text-2xl font-bold text-text-primary mb-3">Controle por Voz</h3>
+                    <p class="text-text-secondary">
+                        Permite a operação do elevador sem contato físico, ideal para pessoas com deficiência visual ou mobilidade reduzida.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="tech-card p-8 rounded-2xl">
+                    <!-- Icon: Smartphone (SVG) -->
+                    <svg class="w-12 h-12 text-brand-blue mb-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                    <h3 class="text-2xl font-bold text-text-primary mb-3">Aplicativo Móvel</h3>
+                    <p class="text-text-secondary">
+                        Uma interface digital acessível para chamar o elevador e selecionar andares, conectada via Bluetooth.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="tech-card p-8 rounded-2xl">
+                    <!-- Icon: Chip (SVG) -->
+                    <svg class="w-12 h-12 text-brand-blue mb-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                    <h3 class="text-2xl font-bold text-text-primary mb-3">Baixo Custo</h3>
+                    <p class="text-text-secondary">
+                        Construído com componentes acessíveis (Arduino, V3), permitindo adaptação em elevadores já existentes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Tecnologia -->
+        <section id="tecnologia" class="py-20 md:py-32 relative z-10 container mx-auto px-6 reveal-section">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">Componentes Principais</h2>
+                    <p class="text-lg text-text-secondary mb-8">
+                        O Elevox é construído sobre uma plataforma de hardware robusta e acessível, gerenciada por um software inteligente para garantir uma experiência de usuário fluida e confiável.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-brand-blue-dark mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <span class="text-text-primary"><strong class="font-semibold">Arduino Mega 2560:</strong> O cérebro do sistema, gerenciando todos os sensores e atuadores.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-brand-blue-dark mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <span class="text-text-primary"><strong class="font-semibold">Módulo V3 (Voz):</strong> Permite o cadastro e reconhecimento de comandos de voz em português.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-brand-blue-dark mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <span class="text-text-primary"><strong class="font-semibold">ESP32 CP2102:</strong> Realiza a comunicação sem fio entre o Arduino e o aplicativo móvel.</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-6 h-6 text-brand-blue-dark mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            <span class="text-text-primary"><strong class="font-semibold">App (Android Studio):</strong> Interface de usuário intuitiva desenvolvida para acessibilidade.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tech-card rounded-2xl p-2">
+                    <img 
+                        src="https://placehold.co/600x450/f8fafc/281dc2?text=Prot%C3%B3tipo+Elevox" 
+                        alt="Protótipo do Hardware Elevox" 
+                        class="w-full h-auto rounded-lg"
+                        onerror="this.src='https://placehold.co/600x450/f8fafc/94a3b8?text=Erro+ao+carregar+imagem'"
+                    >
+                    <!-- Cor da legenda alterada para mais escura -->
+                    <p class="text-text-secondary text-sm italic p-4 text-center">Renderização do protótipo e interface do aplicativo móvel.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Melhorias Futuras (Nova) -->
+        <section id="melhorias" class="py-20 md:py-32 bg-bg-soft relative z-10 reveal-section">
+            <div class="container mx-auto px-6">
+                <div class="max-w-xl mx-auto text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Melhorias Futuras</h2>
+                    <p class="text-lg text-text-secondary">
+                        O Elevox é um protótipo com potencial para evoluir. Nossos próximos passos visam expandir seu impacto, tecnologia e alcance.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1: Expansão e IA -->
+                    <div class="tech-card p-8 rounded-2xl">
+                        <!-- Icon: Brain Circuit (SVG) -->
+                        <svg class="w-12 h-12 text-brand-blue mb-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-3.9 19.4"></path><path d="M12 2a10 10 0 0 1 3.9 19.4"></path><path d="M12 2v20"></path><path d="M12 12a5 5 0 0 0-5 5"></path><path d="M12 12a5 5 0 0 1 5 5"></path><path d="M12 12a5 5 0 0 1-5-5"></path><path d="M12 12a5 5 0 0 0 5-5"></path><path d="M7 17a5 5 0 0 1 10 0"></path><path d="M7 7a5 5 0 0 0 10 0"></path></svg>
+                        <h3 class="text-2xl font-bold text-text-primary mb-3">Expansão e IA</h3>
+                        <p class="text-text-secondary">
+                            Integração com sistemas de Smart Building (IoT) e implementação de IA para otimização de rotas e comandos de voz mais complexos.
+                        </p>
+                    </div>
+                    <!-- Card 2: Validação Científica -->
+                    <div class="tech-card p-8 rounded-2xl">
+                        <!-- Icon: Clipboard (SVG) -->
+                        <svg class="w-12 h-12 text-brand-blue mb-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+                        <h3 class="text-2xl font-bold text-text-primary mb-3">Validação Científica</h3>
+                        <p class="text-text-secondary">
+                            Realização de testes com grupos de usuários maiores e diversos para coletar métricas de acessibilidade e publicar resultados.
+                        </p>
+                    </div>
+                    <!-- Card 3: Comercialização -->
+                    <div class="tech-card p-8 rounded-2xl">
+                        <!-- Icon: Briefcase (SVG) -->
+                        <svg class="w-12 h-12 text-brand-blue mb-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        <h3 class="text-2xl font-bold text-text-primary mb-3">Viabilidade Comercial</h3>
+                        <p class="text-text-secondary">
+                            Análise de viabilidade comercial, proteção da propriedade intelectual e busca por parcerias estratégicas para levar o Elevox ao mercado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Equipe -->
+        <section id="equipe" class="py-20 md:py-32 relative z-10 reveal-section">
+            <div class="container mx-auto px-6">
+                <div class="max-w-xl mx-auto text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Nossa Equipe</h2>
+                    <p class="text-lg text-text-secondary">
+                        Um projeto acadêmico de extensão movido pela paixão por tecnologia e inclusão social.
+                    </p>
+                </div>
+
+                <!-- Carrossel de Equipe -->
+                <div class="relative max-w-6xl mx-auto px-16">
+                    <!-- Botão Anterior -->
+                    <button id="team-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-brand-blue text-brand-blue hover:text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center group">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Container do Carrossel -->
+                    <div class="overflow-hidden py-4">
+                        <div id="team-carousel" class="flex transition-transform duration-500 ease-in-out">
+                            <!-- Slide 1 (Membros 1-4) -->
+                            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=AS" alt="Ana Silva" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Ana Silva</h3>
+                                    <p class="text-brand-blue mb-3">Gerente de Projeto & Hardware</p>
+                                    <p class="text-text-secondary text-sm">Responsável pela arquitetura do sistema e integração dos componentes.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=BC" alt="Bruno Costa" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Bruno Costa</h3>
+                                    <p class="text-brand-blue mb-3">Dev. Software (Arduino)</p>
+                                    <p class="text-text-secondary text-sm">Desenvolvedor do firmware principal e lógica de controle do elevador.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=CD" alt="Carla Dias" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Carla Dias</h3>
+                                    <p class="text-brand-blue mb-3">UI/UX Designer (App)</p>
+                                    <p class="text-text-secondary text-sm">Criadora da interface do aplicativo móvel focada em acessibilidade.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=DM" alt="Daniel Moreira" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Daniel Moreira</h3>
+                                    <p class="text-brand-blue mb-3">Testes & Acessibilidade</p>
+                                    <p class="text-text-secondary text-sm">Líder dos testes com usuários e garantia de conformidade com normas de acessibilidade.</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 (Membros 5-8) -->
+                            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=ES" alt="Eduardo Santos" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Eduardo Santos</h3>
+                                    <p class="text-brand-blue mb-3">Especialista em IoT</p>
+                                    <p class="text-text-secondary text-sm">Responsável pela integração de sensores e comunicação entre dispositivos.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=FL" alt="Fernanda Lima" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Fernanda Lima</h3>
+                                    <p class="text-brand-blue mb-3">Pesquisadora de Acessibilidade</p>
+                                    <p class="text-text-secondary text-sm">Conduz pesquisas sobre necessidades de usuários com deficiência.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=GA" alt="Gabriel Alves" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Gabriel Alves</h3>
+                                    <p class="text-brand-blue mb-3">Engenheiro Eletrônico</p>
+                                    <p class="text-text-secondary text-sm">Especialista em circuitos e otimização de hardware.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=HR" alt="Helena Rocha" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Helena Rocha</h3>
+                                    <p class="text-brand-blue mb-3">Desenvolvedora Mobile</p>
+                                    <p class="text-text-secondary text-sm">Responsável pelo desenvolvimento e manutenção do aplicativo móvel.</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3 (Membros 9-12) -->
+                            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=IM" alt="Igor Martins" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Igor Martins</h3>
+                                    <p class="text-brand-blue mb-3">Analista de Dados</p>
+                                    <p class="text-text-secondary text-sm">Analisa métricas de uso e performance do sistema.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=JN" alt="Julia Nunes" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Julia Nunes</h3>
+                                    <p class="text-brand-blue mb-3">Coordenadora de Marketing</p>
+                                    <p class="text-text-secondary text-sm">Gerencia a comunicação e divulgação do projeto.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=LC" alt="Lucas Cardoso" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Lucas Cardoso</h3>
+                                    <p class="text-brand-blue mb-3">Especialista em IA</p>
+                                    <p class="text-text-secondary text-sm">Desenvolve algoritmos de reconhecimento de voz e aprendizado.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=MF" alt="Marina Ferreira" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Marina Ferreira</h3>
+                                    <p class="text-brand-blue mb-3">Gestora de Qualidade</p>
+                                    <p class="text-text-secondary text-sm">Garante os padrões de qualidade e segurança do sistema.</p>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4 (Membros 13-14) -->
+                            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=NP" alt="Nicolas Pereira" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Nicolas Pereira</h3>
+                                    <p class="text-brand-blue mb-3">Consultor de Negócios</p>
+                                    <p class="text-text-secondary text-sm">Analisa viabilidade comercial e oportunidades de mercado.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center">
+                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=OS" alt="Olivia Souza" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                                    <h3 class="text-xl font-bold text-text-primary">Olivia Souza</h3>
+                                    <p class="text-brand-blue mb-3">Designer Gráfica</p>
+                                    <p class="text-text-secondary text-sm">Cria toda a identidade visual e materiais de comunicação do projeto.</p>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center opacity-0 pointer-events-none">
+                                    <div class="w-32 h-32 mx-auto mb-4"></div>
+                                </div>
+                                <div class="tech-card p-6 rounded-2xl text-center opacity-0 pointer-events-none">
+                                    <div class="w-32 h-32 mx-auto mb-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão Próximo -->
+                    <button id="team-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-brand-blue text-brand-blue hover:text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center group">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Indicadores -->
+                    <div class="flex justify-center gap-2 mt-8">
+                        <button class="team-indicator w-3 h-3 rounded-full bg-brand-blue transition-all duration-300" data-slide="0"></button>
+                        <button class="team-indicator w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" data-slide="1"></button>
+                        <button class="team-indicator w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" data-slide="2"></button>
+                        <button class="team-indicator w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" data-slide="3"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção CTA (Contato) -->
+        <section id="contato" class="py-20 md:py-32 relative z-10 container mx-auto px-6 text-center reveal-section">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-6">O Futuro é Acessível.</h2>
+                <p class="text-lg text-text-secondary mb-10">
+                    O Elevox é um protótipo com o potencial de transformar o cotidiano de milhares de pessoas. Entre em contato para saber mais sobre o projeto, parcerias ou como apoiar.
+                </p>
+                <a href="#" class="bg-gradient-to-r from-brand-blue to-brand-blue-dark text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-brand-blue/30 transition-all duration-300 transform hover:scale-105">
+                    Entre em Contato
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-slate-200 mt-20"> <!-- Borda atualizada -->
+        <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-6 md:mb-0">
+                <span class="text-xl font-bold gradient-text">Projeto Elevox</span>
+                <p class="text-sm text-text-secondary">© 2025 Projeto Elevox. Todos os direitos reservados.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-text-secondary hover:text-text-primary transition-colors">Privacidade</a>
+                <a href="#" class="text-text-secondary hover:text-text-primary transition-colors">Documentação</a>
+                <a href="#" class="text-text-secondary hover:text-text-primary transition-colors">Imprensa</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts Principais -->
+    <script src="js/main.js"></script>
+</body>
+</html>
