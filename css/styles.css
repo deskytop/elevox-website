@@ -78,3 +78,34 @@ body {
     /* Sombra azul sutil */
     box-shadow: 0 10px 30px rgba(40, 29, 194, 0.1);
 }
+
+.modal-overlay {
+    background-color: rgba(15, 23, 42, 0.6); /* Fundo escuro translúcido */
+    backdrop-filter: blur(4px); /* Efeito de desfoque no fundo */
+}
+
+.component-card {
+    cursor: pointer; /* Indica que é clicável */
+}
+
+/* Efeito no botão "Ver Specs" ao passar o mouse no card */
+.component-card:hover .view-specs-btn {
+    background-color: #281dc2;
+    color: #ffffff;
+}
+
+/* Animação de fade-in para o modal */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out forwards;
+}

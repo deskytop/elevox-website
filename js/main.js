@@ -2,6 +2,115 @@
    PROJETO ELEVOX - JAVASCRIPT PRINCIPAL
    =================================== */
 
+// --- Dados e Funções do Modal (Escopo Global) ---
+const componentSpecs = {
+    'arduino': {
+        title: 'Arduino Mega 2560',
+        desc: 'Placa de microcontrolador baseada no ATmega2560. O cérebro do projeto.',
+        price: 'R$ 80,00',
+        details: [
+            'Tensão de Operação: 5V',
+            'Pinos de E/S Digitais: 54 (15 PWM)',
+            'Pinos de Entrada Analógica: 16',
+            'Memória Flash: 256 KB',
+            'Clock Speed: 16 MHz'
+        ]
+    },
+    'voz': {
+        title: 'Módulo de Reconhecimento de Voz V3',
+        desc: 'Permite o controle do elevador através de comandos de voz pré-gravados.',
+        price: 'R$ 150,00',
+        details: [
+            'Tensão: 4.5-5.5V',
+            'Corrente: <40mA',
+            'Interface: Serial UART (TTL)',
+            'Precisão: 99% (ambiente controlado)',
+            'Capacidade: Até 80 comandos de voz'
+        ]
+    },
+    'bluetooth': {
+        title: 'Módulo Bluetooth HC-05',
+        desc: 'Interface de comunicação sem fio para o aplicativo móvel.',
+        price: 'R$ 40,00',
+        details: [
+            'Protocolo: Bluetooth 2.0+EDR',
+            'Frequência: 2.4GHz ISM band',
+            'Alcance: ~10 metros',
+            'Tensão de alimentação: 3.6V a 6V',
+            'Modos: Master e Slave'
+        ]
+    },
+    'motores': {
+        title: 'Drivers e Motores',
+        desc: 'Sistema de tração e controle de potência para a cabine.',
+        price: 'R$ 120,00',
+        details: [
+            'Motor: DC 12V Alto Torque',
+            'Driver: Ponte H L298N',
+            'Capacidade de Corrente: 2A por canal',
+            'Controle: PWM (Velocidade Variável)'
+        ]
+    },
+    'estrutura': {
+        title: 'Estrutura em MDF',
+        desc: 'Corpo físico do protótipo cortado a laser.',
+        price: 'R$ 250,00',
+        details: [
+            'Material: MDF 3mm e 6mm',
+            'Corte: Laser CNC de alta precisão',
+            'Dimensões: 40cm x 20cm x 20cm',
+            'Acabamento: Pintura acrílica'
+        ]
+    },
+    'outros': {
+        title: 'Outros Materiais',
+        desc: 'Componentes diversos para montagem e acabamento.',
+        price: 'R$ 443,10',
+        details: [
+            'Display LCD 16x2 com I2C',
+            'Botões Push-Button',
+            'Fonte de Alimentação 12V 5A',
+            'Cabos, Jumpers e Conectores',
+            'Parafusos e Porcas'
+        ]
+    }
+};
+
+// Função para abrir o modal (GLOBAL)
+function openModal(componentId) {
+    const modal = document.getElementById('specs-modal');
+    const contentDiv = document.getElementById('modal-content');
+    const data = componentSpecs[componentId];
+
+    if (data) {
+        // Constrói a lista de detalhes
+        let detailsHtml = '<ul class="text-left text-sm text-text-secondary space-y-2 bg-gray-50 p-4 rounded-lg mt-4">';
+        data.details.forEach(detail => {
+            detailsHtml += `<li class="flex items-center"><span class="w-2 h-2 bg-brand-blue rounded-full mr-2"></span>${detail}</li>`;
+        });
+        detailsHtml += '</ul>';
+
+        // Injeta o HTML no modal
+        contentDiv.innerHTML = `
+            <h3 class="text-2xl font-bold text-brand-blue mb-2">${data.title}</h3>
+            <p class="text-text-primary font-bold text-xl mb-2">${data.price}</p>
+            <p class="text-text-secondary mb-4">${data.desc}</p>
+            <hr class="border-gray-200 my-4">
+            <h4 class="text-left font-semibold text-text-primary mb-2">Especificações Técnicas:</h4>
+            ${detailsHtml}
+        `;
+
+        // Remove a classe 'hidden' para mostrar o modal
+        modal.classList.remove('hidden');
+    }
+}
+
+// Função para fechar o modal (GLOBAL)
+function closeModal() {
+    const modal = document.getElementById('specs-modal');
+    modal.classList.add('hidden');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Animação 3D Hero (Three.js) ---
@@ -233,6 +342,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 startAutoplay();
             });
         }
+    }
+
+
+    // --- Event Listener para fechar modal ao clicar fora ---
+    const specsModal = document.getElementById('specs-modal');
+    if (specsModal) {
+        specsModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
     }
 
     // Iniciar funções

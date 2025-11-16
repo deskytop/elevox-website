@@ -152,6 +152,84 @@
             </div>
         </section>
 
+        <section id="custos" class="py-20 md:py-32 bg-soft relative z-10 container mx-auto px-6 reveal-section">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Custo Total do Protótipo</h2>
+                <div class="inline-block bg-white border border-brand-blue rounded-full px-8 py-4 shadow-lg mb-6">
+                    <span class="text-4xl font-extrabold text-brand-blue">R$ 1.083,10</span>
+                </div>
+                <p class="text-lg text-text-secondary">
+                    Transparência total. Clique nos componentes abaixo para ver as especificações técnicas detalhadas de cada item utilizado no projeto.
+                </p>
+            </div>
+
+            <!-- Grid de Cards Interativos (Clicáveis) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Componente 1: Arduino -->
+                <!-- O 'onclick="openModal()"' aciona o JavaScript novo -->
+                <div class="tech-card p-6 rounded-xl text-center component-card group" onclick="openModal('arduino')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                    </div>
+                    <h4 class="font-bold text-text-primary mb-1">Arduino Mega 2560</h4>
+                    <p class="text-brand-blue font-semibold text-sm mb-3">~R$ 80,00</p>
+                    <button class="view-specs-btn text-xs border border-brand-blue text-brand-blue px-3 py-1 rounded-full transition-colors">Ver Specs</button>
+                </div>
+
+                <!-- Componente 2: Módulo Voz -->
+                <div class="tech-card p-6 rounded-xl text-center component-card group" onclick="openModal('voz')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+                    </div>
+                    <h4 class="font-bold text-text-primary mb-1">Módulo Voz V3</h4>
+                    <p class="text-brand-blue font-semibold text-sm mb-3">~R$ 150,00</p>
+                    <button class="view-specs-btn text-xs border border-brand-blue text-brand-blue px-3 py-1 rounded-full transition-colors">Ver Specs</button>
+                </div>
+
+                <!-- Componente 3: Bluetooth -->
+                <div class="tech-card p-6 rounded-xl text-center component-card group" onclick="openModal('bluetooth')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6.5 6.5 17.5 17.5 12 23 12 1 17.5 6.5 6.5 17.5"></polyline></svg>
+                    </div>
+                    <h4 class="font-bold text-text-primary mb-1">Bluetooth HC-05</h4>
+                    <p class="text-brand-blue font-semibold text-sm mb-3">~R$ 40,00</p>
+                    <button class="view-specs-btn text-xs border border-brand-blue text-brand-blue px-3 py-1 rounded-full transition-colors">Ver Specs</button>
+                </div>
+
+                <!-- Componente 4: Drivers & Motores -->
+                <div class="tech-card p-6 rounded-xl text-center component-card group" onclick="openModal('motores')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><path d="m19.4 15-1.26-2.55A6 6 0 0 0 15 9.4l-2.55-1.26a1 1 0 0 0-.9 0L9 9.4a6 6 0 0 0-3.14 3.14L4.6 15a1 1 0 0 0 0 .9l2.55 1.26a6 6 0 0 0 3.14 3.14l1.26 2.55a1 1 0 0 0 .9 0l1.26-2.55a6 6 0 0 0 3.14-3.14l2.55-1.26a1 1 0 0 0 0-.9z"></path></svg>
+                    </div>
+                    <h4 class="font-bold text-text-primary mb-1">Drivers & Motores</h4>
+                    <p class="text-brand-blue font-semibold text-sm mb-3">~R$ 120,00</p>
+                    <button class="view-specs-btn text-xs border border-brand-blue text-brand-blue px-3 py-1 rounded-full transition-colors">Ver Specs</button>
+                </div>
+
+                <!-- Componente 5: Estrutura MDF -->
+                <div class="tech-card p-6 rounded-xl text-center component-card group" onclick="openModal('estrutura')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"></path><path d="M3 9h18"></path><path d="M3 15h18"></path><path d="M9 3v18"></path><path d="M15 3v18"></path></svg>
+                    </div>
+                    <h4 class="font-bold text-text-primary mb-1">Estrutura MDF</h4>
+                    <p class="text-brand-blue font-semibold text-sm mb-3">~R$ 250,00</p>
+                    <button class="view-specs-btn text-xs border border-brand-blue text-brand-blue px-3 py-1 rounded-full transition-colors">Ver Specs</button>
+                </div>
+
+                <!-- Componente 6: Outros -->
+                <div class="tech-card p-6 rounded-xl text-center component-card group" onclick="openModal('outros')">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
+                    </div>
+                    <h4 class="font-bold text-text-primary mb-1">Outros Materiais</h4>
+                    <p class="text-brand-blue font-semibold text-sm mb-3">~R$ 443,10</p>
+                    <button class="view-specs-btn text-xs border border-brand-blue text-brand-blue px-3 py-1 rounded-full transition-colors">Ver Specs</button>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Seção Melhorias Futuras (Nova) -->
         <section id="melhorias" class="py-20 md:py-32 bg-bg-soft relative z-10 reveal-section">
             <div class="container mx-auto px-6">
@@ -371,6 +449,21 @@
             </div>
         </div>
     </footer>
+
+    <div id="specs-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-overlay p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-8 relative animate-fade-in-up">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <!-- O conteúdo dinâmico (specs) é inserido AQUI pelo JavaScript -->
+            <div id="modal-content" class="text-center"></div>
+            
+            <div class="mt-6 text-center">
+                <button onclick="closeModal()" class="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2 rounded-full transition-colors">Fechar</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts Principais -->
     <script src="js/main.js"></script>
