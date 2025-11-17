@@ -7,7 +7,7 @@ const componentSpecs = {
     'arduino': {
         title: 'Arduino Mega 2560',
         desc: 'Placa de microcontrolador baseada no ATmega2560. O cérebro do projeto.',
-        price: 'R$ 80,00',
+        price: 'R$ 199,00',
         details: [
             'Tensão de Operação: 5V',
             'Pinos de E/S Digitais: 54 (15 PWM)',
@@ -19,59 +19,68 @@ const componentSpecs = {
     'voz': {
         title: 'Módulo de Reconhecimento de Voz V3',
         desc: 'Permite o controle do elevador através de comandos de voz pré-gravados.',
-        price: 'R$ 150,00',
+        price: 'R$ 235,00',
         details: [
             'Tensão: 4.5-5.5V',
             'Corrente: <40mA',
             'Interface: Serial UART (TTL)',
-            'Precisão: 99% (ambiente controlado)',
-            'Capacidade: Até 80 comandos de voz'
+            'Precisão: 99% (ambiente controlado)'
         ]
     },
     'bluetooth': {
-        title: 'Módulo Bluetooth HC-05',
-        desc: 'Interface de comunicação sem fio para o aplicativo móvel.',
-        price: 'R$ 40,00',
+        title: 'ESP32 CP2102',
+        desc: 'Módulo de comunicação sem fio para o aplicativo móvel.',
+        price: 'R$ 62,00',
         details: [
-            'Protocolo: Bluetooth 2.0+EDR',
+            'Protocolo: Wifi 2.4Ghz e Bluetooth BLE 4.2',
             'Frequência: 2.4GHz ISM band',
-            'Alcance: ~10 metros',
-            'Tensão de alimentação: 3.6V a 6V',
-            'Modos: Master e Slave'
+            'Flash: 4 MB',
+            'Tensão de lógica: 3.3V'
         ]
     },
     'motores': {
         title: 'Drivers e Motores',
-        desc: 'Sistema de tração e controle de potência para a cabine.',
-        price: 'R$ 120,00',
+        desc: 'Sistema elétrico para o elevador.',
+        price: 'R$ 179,00',
         details: [
-            'Motor: DC 12V Alto Torque',
-            'Driver: Ponte H L298N',
-            'Capacidade de Corrente: 2A por canal',
-            'Controle: PWM (Velocidade Variável)'
+            'Sensor Magnético Reed Switch',
+            'Micro Servo Motor 360',
+            'Sensor Detector Fogo Chama',
+            'Módulo MP3',
+            'Potenciometro',
+            'Servo Motor MG99S Metal'
         ]
     },
     'estrutura': {
         title: 'Estrutura em MDF',
-        desc: 'Corpo físico do protótipo cortado a laser.',
-        price: 'R$ 250,00',
+        desc: 'Corpo físico do protótipo.',
+        price: 'R$ 150,00',
         details: [
             'Material: MDF 3mm e 6mm',
             'Corte: Laser CNC de alta precisão',
-            'Dimensões: 40cm x 20cm x 20cm',
-            'Acabamento: Pintura acrílica'
+            'Peso: 265g'
         ]
     },
     'outros': {
         title: 'Outros Materiais',
         desc: 'Componentes diversos para montagem e acabamento.',
-        price: 'R$ 443,10',
+        price: 'R$ 225,35',
         details: [
-            'Display LCD 16x2 com I2C',
-            'Botões Push-Button',
-            'Fonte de Alimentação 12V 5A',
-            'Cabos, Jumpers e Conectores',
-            'Parafusos e Porcas'
+            'Display OLED I2C 0.96" Azul',
+            'Plug P2 MP3',
+            'Conector de bateria',
+            'Chaves Push Button',
+            'Resistor 100',
+            'LEDs Verde',
+            'Barra de Pinos Macho',
+            'Kit Jumper',
+            'Conector Plug P4',
+            'Chave Botão',
+            'LEDs Branco',
+            'Jumper Fêmea-Fêmea',
+            'Protoboard 830 Furos',
+            'Protoboard 1260 Furos',
+            'Jumper Macho-Macho'
         ]
     }
 };

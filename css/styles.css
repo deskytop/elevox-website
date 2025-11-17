@@ -108,3 +108,20 @@ body {
 .animate-fade-in-up {
     animation: fadeInUp 0.3s ease-out forwards;
 }
+
+/* Estilos para imagens - Evitar distorção */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Imagens circulares (perfis) - manter proporção sem distorção */
+img.rounded-full {
+    object-fit: cover !important;
+    object-position: center top;
+}
+
+/* Imagens gerais - manter proporção */
+img.rounded-lg {
+    object-fit: contain;
+}
