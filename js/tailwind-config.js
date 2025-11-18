@@ -14,6 +14,7 @@ tailwind.config = {
                 'brand-blue-dark': '#201799', // Tom mais escuro para hover
                 'text-primary': '#0f172a', // slate-900 (Textos principais)
                 'text-secondary': '#475569', // slate-600 (Textos de parágrafo)
+                'text-menu': '#fafafa',
                 'bg-light': '#ffffff', // Fundo principal
                 'bg-soft': '#f8fafc', // slate-50 (Fundo de seções)
             },

@@ -22,24 +22,22 @@
 </head>
 
 <body class="relative bg-bg-light text-text-primary">
-    
+
     <!-- Fundo Aurora -->
     <div class="aurora-background"></div>
-
-    <!-- Canvas 3D para o Hero -->
-    <canvas id="elevox-canvas"></canvas>
 
     <!-- Header -->
     <header id="header" class="header-glass fixed top-0 left-0 w-full z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold gradient-text">
-                Projeto Elevox
+            <a href="#home" class="flex items-center gap-2">
+                <img src="assets/favicon.ico" alt="Elevox Logo" class="w-8 h-8">
+                <span class="text-2xl font-bold gradient-text">Elevox</span>
             </a>
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#projeto" class="text-text-secondary hover:text-text-primary transition-colors">O Projeto</a>
                 <a href="#tecnologia" class="text-text-secondary hover:text-text-primary transition-colors">Tecnologia</a>
-                <a href="#melhorias" class="text-text-secondary hover:text-text-primary transition-colors">Melhorias Futuras</a>
                 <a href="#custos" class="text-text-secondary hover:text-text-primary transition-colors">Custos</a>
+                <a href="#melhorias" class="text-text-secondary hover:text-text-primary transition-colors">Melhorias Futuras</a>
                 <a href="#equipe" class="text-text-secondary hover:text-text-primary transition-colors">Equipe</a>
                 <a href="#contato" class="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2 rounded-md transition-colors">Contato</a>
             </div>
@@ -57,12 +55,15 @@
         
         <!-- Seção Hero -->
         <section id="home" class="h-screen flex items-center justify-center relative z-10 px-6 text-center">
+            <!-- Canvas 3D dentro do Hero -->
+            <canvas id="elevox-canvas"></canvas>
+
             <div class="flex flex-col items-center max-w-3xl">
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-6" style="animation: fadeInUp 1s ease-out forwards;">
                     <span class="gradient-text">Revolucionando a</span>
                     <span class="block text-brand-blue">Acessibilidade</span>
                 </h1>
-                <p class="text-lg md:text-xl text-text-secondary mb-10 max-w-xl" style="animation: fadeInUp 1.2s ease-out forwards; animation-delay: 0.2s;">
+                <p class="text-lg md:text-xl text-text-menu mb-10 max-w-xl" style="animation: fadeInUp 1.2s ease-out forwards; animation-delay: 0.2s;">
                     O Elevox é um elevador inteligente que integra comandos de voz e app móvel para garantir autonomia e inclusão a pessoas com deficiência.
                 </p>
                 <div style="animation: fadeInUp 1.4s ease-out forwards; animation-delay: 0.4s;">
@@ -140,15 +141,86 @@
                         </li>
                     </ul>
                 </div>
-                <div class="tech-card rounded-2xl p-2">
-                    <img 
-                        src="https://placehold.co/600x450/f8fafc/281dc2?text=Prot%C3%B3tipo+Elevox" 
-                        alt="Protótipo do Hardware Elevox" 
-                        class="w-full h-auto rounded-lg"
-                        onerror="this.src='https://placehold.co/600x450/f8fafc/94a3b8?text=Erro+ao+carregar+imagem'"
-                    >
-                    <!-- Cor da legenda alterada para mais escura -->
-                    <p class="text-text-secondary text-sm italic p-4 text-center">Renderização do protótipo e interface do aplicativo móvel.</p>
+                <!-- Carrossel de Imagens do Protótipo -->
+                <div class="tech-card rounded-2xl p-2 relative">
+                    <!-- Container do Carrossel -->
+                    <div class="overflow-hidden rounded-lg relative">
+                        <div id="prototype-carousel" class="flex transition-transform duration-500 ease-in-out">
+                            <!-- Imagem 1 -->
+                            <div class="min-w-full">
+                                <img
+                                    src="https://placehold.co/600x450/f8fafc/281dc2?text=Prot%C3%B3tipo+1"
+                                    alt="Protótipo do Hardware Elevox - Visão Frontal"
+                                    class="w-full h-auto rounded-lg"
+                                    onerror="this.src='https://placehold.co/600x450/f8fafc/94a3b8?text=Erro+ao+carregar+imagem'"
+                                >
+                            </div>
+                            <!-- Imagem 2 -->
+                            <div class="min-w-full">
+                                <img
+                                    src="https://placehold.co/600x450/f8fafc/281dc2?text=Prot%C3%B3tipo+2"
+                                    alt="Protótipo do Hardware Elevox - Visão Lateral"
+                                    class="w-full h-auto rounded-lg"
+                                    onerror="this.src='https://placehold.co/600x450/f8fafc/94a3b8?text=Erro+ao+carregar+imagem'"
+                                >
+                            </div>
+                            <!-- Imagem 3 -->
+                            <div class="min-w-full">
+                                <img
+                                    src="https://placehold.co/600x450/f8fafc/281dc2?text=Prot%C3%B3tipo+3"
+                                    alt="Protótipo do Hardware Elevox - Detalhes Internos"
+                                    class="w-full h-auto rounded-lg"
+                                    onerror="this.src='https://placehold.co/600x450/f8fafc/94a3b8?text=Erro+ao+carregar+imagem'"
+                                >
+                            </div>
+                            <!-- Imagem 4 -->
+                            <div class="min-w-full">
+                                <img
+                                    src="https://placehold.co/600x450/f8fafc/281dc2?text=Prot%C3%B3tipo+4"
+                                    alt="Interface do Aplicativo Móvel"
+                                    class="w-full h-auto rounded-lg"
+                                    onerror="this.src='https://placehold.co/600x450/f8fafc/94a3b8?text=Erro+ao+carregar+imagem'"
+                                >
+                            </div>
+                            <!-- Imagem 5 -->
+                            <div class="min-w-full">
+                                <img
+                                    src="https://placehold.co/600x450/f8fafc/281dc2?text=Prot%C3%B3tipo+5"
+                                    alt="Sistema Completo Montado"
+                                    class="w-full h-auto rounded-lg"
+                                    onerror="this.src='https://placehold.co/600x450/f8fafc/94a3b8?text=Erro+ao+carregar+imagem'"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Botão Anterior -->
+                        <button id="prototype-prev" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-brand-blue text-brand-blue hover:text-white w-10 h-10 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+
+                        <!-- Botão Próximo -->
+                        <button id="prototype-next" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-brand-blue text-brand-blue hover:text-white w-10 h-10 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Indicadores e Legenda -->
+                    <div class="p-4">
+                        <!-- Indicadores -->
+                        <div class="flex justify-center gap-2 mb-3">
+                            <button class="prototype-indicator w-2 h-2 rounded-full bg-brand-blue transition-all duration-300" data-slide="0"></button>
+                            <button class="prototype-indicator w-2 h-2 rounded-full bg-slate-300 transition-all duration-300" data-slide="1"></button>
+                            <button class="prototype-indicator w-2 h-2 rounded-full bg-slate-300 transition-all duration-300" data-slide="2"></button>
+                            <button class="prototype-indicator w-2 h-2 rounded-full bg-slate-300 transition-all duration-300" data-slide="3"></button>
+                            <button class="prototype-indicator w-2 h-2 rounded-full bg-slate-300 transition-all duration-300" data-slide="4"></button>
+                        </div>
+                        <!-- Legenda -->
+                        <p class="text-text-secondary text-sm italic text-center">Protótipo e interface do aplicativo móvel.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -334,7 +406,7 @@
                                 <div class="tech-card p-6 rounded-2xl text-center">
                                     <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/jo%C3%A3o%20rezende.png?raw=true" alt="João Rezende" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
                                     <h3 class="text-xl font-bold text-text-primary">João Rezende</h3>
-                                    <p class="text-brand-blue mb-3">Engenheiro Eletrônico</p>
+                                    <p class="text-brand-blue mb-3">Analista de Branding</p>
                                 </div>
                                 <div class="tech-card p-6 rounded-2xl text-center">
                                     <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Larissa%20Freitas.jpg?raw=true" alt="Larissa Freitas" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
@@ -372,7 +444,7 @@
                                 <div class="tech-card p-6 rounded-2xl text-center">
                                     <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Ayla%20Beatriz.jpg?raw=true" alt="Ayla Beatriz" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
                                     <h3 class="text-xl font-bold text-text-primary">Ayla Beatriz</h3>
-                                    <p class="text-brand-blue mb-3">Consultor de Negócios</p>
+                                    <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
                                 </div>
                                 <div class="tech-card p-6 rounded-2xl text-center">
                                     <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Nadia%20Sugawara.jpg?raw=true" alt="Nadia Sugawara" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
@@ -426,8 +498,8 @@
     <footer class="relative z-10 border-t border-slate-200 mt-20"> <!-- Borda atualizada -->
         <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <div class="mb-6 md:mb-0">
-                <span class="text-xl font-bold gradient-text">Projeto Elevox</span>
-                <p class="text-sm text-text-secondary">© 2025 Projeto Elevox. Todos os direitos reservados.</p>
+                <span class="text-xl font-bold gradient-text">Elevox</span>
+                <p class="text-sm text-text-secondary">© 2025 Elevox. Todos os direitos reservados.</p>
             </div>
             <div class="flex space-x-6">
                 <a href="#" class="text-text-secondary hover:text-text-primary transition-colors">Privacidade</a>

@@ -122,8 +122,14 @@ function closeModal() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* ===================================
+       CÓDIGO DE PARTÍCULAS 3D (COMENTADO)
+       Descomente para reativar as partículas
+       =================================== */
+
+    /*
     // --- Animação 3D Hero (Three.js) ---
-    let scene, camera, renderer, particles; // Variáveis globais
+    let scene, camera, renderer, particles;
 
     function init3D() {
         try {
@@ -136,16 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderer = new THREE.WebGLRenderer({
                 canvas: canvas,
-                alpha: true // Fundo transparente
+                alpha: true
             });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // --- LUZES ---
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
             scene.add(ambientLight);
 
-            // --- PARTÍCULAS (Com novas cores) ---
             const particleCount = 20000;
             const positions = new Float32Array(particleCount * 3);
             const colors = new Float32Array(particleCount * 3);
@@ -155,14 +159,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 size: 0.005,
                 vertexColors: true,
                 transparent: true,
-                opacity: 0.6, // Opacidade levemente reduzida para o fundo claro
-                blending: THREE.NormalBlending, // Mudado de Additive para Normal
+                opacity: 0.5,
+                blending: THREE.NormalBlending,
                 sizeAttenuation: true
             });
 
-            // Cores do EleVox (Azul Vibrante)
-            const colorBlue = new THREE.Color(0x281dc2);
-            const colorBlueDark = new THREE.Color(0x201799);
+            const colorBlue = new THREE.Color(0x6b8fff);
+            const colorBlueDark = new THREE.Color(0x4d7cfe);
 
             for (let i = 0; i < particleCount; i++) {
                 const i3 = i * 3;
@@ -179,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 positions[i3 + 1] = y;
                 positions[i3 + 2] = z;
 
-                // Alterna entre as cores da marca
                 const color = Math.random() > 0.5 ? colorBlue : colorBlueDark;
                 colors[i3] = color.r;
                 colors[i3 + 1] = color.g;
@@ -222,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         camera.lookAt(scene.position);
         renderer.render(scene, camera);
     }
+    */
 
     // --- Animação de Scroll (IntersectionObserver) ---
     function initScrollAnimations() {
@@ -354,6 +357,100 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // --- Carrossel de Imagens do Protótipo ---
+    function initPrototypeCarousel() {
+        const carousel = document.getElementById('prototype-carousel');
+        const prevBtn = document.getElementById('prototype-prev');
+        const nextBtn = document.getElementById('prototype-next');
+        const indicators = document.querySelectorAll('.prototype-indicator');
+
+        if (!carousel || !prevBtn || !nextBtn) return;
+
+        let currentSlide = 0;
+        const totalSlides = 5; // 5 imagens no total
+        let autoplayInterval;
+
+        // Função para atualizar o carrossel
+        function updateCarousel() {
+            const translateX = -currentSlide * 100;
+            carousel.style.transform = `translateX(${translateX}%)`;
+
+            // Atualizar indicadores
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.remove('bg-slate-300');
+                    indicator.classList.add('bg-brand-blue');
+                } else {
+                    indicator.classList.remove('bg-brand-blue');
+                    indicator.classList.add('bg-slate-300');
+                }
+            });
+        }
+
+        // Função para próximo slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        // Função para slide anterior
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Função para ir para um slide específico
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        // Autoplay - 7 segundos
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 7000);
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        }
+
+        // Event listeners para botões
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoplay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoplay();
+        });
+
+        // Event listeners para indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+                resetAutoplay();
+            });
+        });
+
+        // Iniciar autoplay
+        startAutoplay();
+
+        // Pausar autoplay quando o mouse estiver sobre o carrossel
+        const carouselContainer = carousel.closest('.tech-card');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoplayInterval);
+            });
+
+            carouselContainer.addEventListener('mouseleave', () => {
+                clearInterval(autoplayInterval);
+                startAutoplay();
+            });
+        }
+    }
+
     // --- Event Listener para fechar modal ao clicar fora ---
     const specsModal = document.getElementById('specs-modal');
     if (specsModal) {
@@ -365,9 +462,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Iniciar funções
-    init3D();
-    animate();
+    // init3D(); // Descomente para ativar partículas
+    // animate(); // Descomente para ativar partículas
     initScrollAnimations();
     initHeaderScroll();
     initTeamCarousel();
+    initPrototypeCarousel();
 });
