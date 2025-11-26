@@ -123,8 +123,7 @@ function closeModal() {
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ===================================
-       CÓDIGO DE PARTÍCULAS 3D (COMENTADO)
-       Descomente para reativar as partículas
+       CÓDIGO DE PARTÍCULAS 3D
        =================================== */
 
     /*
@@ -262,97 +261,119 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Carrossel da Equipe ---
+    // --- Carrossel Infinito de Equipe (GSAP) ---
     function initTeamCarousel() {
-        const carousel = document.getElementById('team-carousel');
-        const prevBtn = document.getElementById('team-prev');
-        const nextBtn = document.getElementById('team-next');
-        const indicators = document.querySelectorAll('.team-indicator');
+        const cards = gsap.utils.toArray('.team-cards li');
 
-        if (!carousel || !prevBtn || !nextBtn) return;
+        if (cards.length === 0) return;
 
-        let currentSlide = 0;
-        const totalSlides = 4; // 4 slides no total
-        let autoplayInterval;
+        // Fade in suave das imagens
+        gsap.to(".team-cards li img", { opacity: 1, delay: 0.1 });
 
-        // Função para atualizar o carrossel
-        function updateCarousel() {
-            const translateX = -currentSlide * 100;
-            carousel.style.transform = `translateX(${translateX}%)`;
+        let iteration = 0;
+        const spacing = 0.06;
+        const snap = gsap.utils.snap(spacing);
+        const seamlessLoop = buildSeamlessLoop(cards, spacing);
+        const scrub = gsap.to(seamlessLoop, {
+            totalTime: 0,
+            duration: 0.5,
+            ease: "power3",
+            paused: true
+        });
 
-            // Atualizar indicadores
-            indicators.forEach((indicator, index) => {
-                if (index === currentSlide) {
-                    indicator.classList.remove('bg-slate-300');
-                    indicator.classList.add('bg-brand-blue');
-                } else {
-                    indicator.classList.remove('bg-brand-blue');
-                    indicator.classList.add('bg-slate-300');
+        let currentTime = 0;
+
+        function scrubTo(totalTime) {
+            let progress = (totalTime - seamlessLoop.duration() * iteration) / seamlessLoop.duration();
+            if (progress > 1) {
+                iteration++;
+            } else if (progress < 0) {
+                iteration--;
+            }
+            currentTime = totalTime;
+            scrub.vars.totalTime = snap((iteration + progress) * seamlessLoop.duration());
+            scrub.invalidate().restart();
+        }
+
+        // Auto-play: avança automaticamente a cada 5 segundos
+        let autoplayInterval = setInterval(() => {
+            currentTime += spacing;
+            scrubTo(currentTime);
+        }, 5000);
+
+        // Botões manuais (pausam o autoplay temporariamente e reiniciam)
+        document.querySelector(".team-next").addEventListener("click", () => {
+            clearInterval(autoplayInterval);
+            currentTime += spacing;
+            scrubTo(currentTime);
+            autoplayInterval = setInterval(() => {
+                currentTime += spacing;
+                scrubTo(currentTime);
+            }, 5000);
+        });
+
+        document.querySelector(".team-prev").addEventListener("click", () => {
+            clearInterval(autoplayInterval);
+            currentTime -= spacing;
+            scrubTo(currentTime);
+            autoplayInterval = setInterval(() => {
+                currentTime += spacing;
+                scrubTo(currentTime);
+            }, 5000);
+        });
+
+        function buildSeamlessLoop(items, spacing) {
+            let overlap = Math.ceil(1 / spacing);
+            let startTime = items.length * spacing + 0.5;
+            let loopTime = (items.length + overlap) * spacing + 1;
+            let rawSequence = gsap.timeline({ paused: true });
+            let seamlessLoop = gsap.timeline({
+                paused: true,
+                repeat: -1,
+                onRepeat() {
+                    this._time === this._dur && (this._tTime += this._dur - 0.01);
                 }
             });
-        }
+            let l = items.length + overlap * 2;
+            let time = 0;
+            let i, index, item;
 
-        // Função para próximo slide
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateCarousel();
-        }
+            gsap.set(items, { xPercent: 400, opacity: 0, scale: 0 });
 
-        // Função para slide anterior
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        }
+            for (i = 0; i < l; i++) {
+                index = i % items.length;
+                item = items[index];
+                time = i * spacing;
+                rawSequence.fromTo(item, { scale: 0, opacity: 0 }, {
+                    scale: 1,
+                    opacity: 1,
+                    zIndex: 100,
+                    duration: 0.5,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power1.in",
+                    immediateRender: false
+                }, time)
+                    .fromTo(item, { xPercent: 400 }, {
+                        xPercent: -400,
+                        duration: 1,
+                        ease: "none",
+                        immediateRender: false
+                    }, time);
+            }
 
-        // Função para ir para um slide específico
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
-        }
-
-        // Event listeners para botões
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            resetAutoplay();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            resetAutoplay();
-        });
-
-        // Event listeners para indicadores
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                goToSlide(index);
-                resetAutoplay();
+            rawSequence.time(startTime);
+            seamlessLoop.to(rawSequence, {
+                time: loopTime,
+                duration: loopTime - startTime,
+                ease: "none"
+            }).fromTo(rawSequence, { time: overlap * spacing + 1 }, {
+                time: startTime,
+                duration: startTime - (overlap * spacing + 1),
+                immediateRender: false,
+                ease: "none"
             });
-        });
-
-        // Autoplay - Tempo
-        function startAutoplay() {
-            autoplayInterval = setInterval(nextSlide, 10000);
-        }
-
-        function resetAutoplay() {
-            clearInterval(autoplayInterval);
-            startAutoplay();
-        }
-
-        // Iniciar autoplay
-        startAutoplay();
-
-        // Pausar autoplay quando o mouse estiver sobre o carrossel
-        const carouselContainer = carousel.closest('.relative');
-        if (carouselContainer) {
-            carouselContainer.addEventListener('mouseenter', () => {
-                clearInterval(autoplayInterval);
-            });
-
-            carouselContainer.addEventListener('mouseleave', () => {
-                clearInterval(autoplayInterval); // Limpar antes de iniciar novo
-                startAutoplay();
-            });
+            return seamlessLoop;
         }
     }
 

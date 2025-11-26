@@ -14,6 +14,10 @@
     <!-- Three.js (3D Library) CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+    <!-- GSAP for carousel animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <!-- Configuração do Tailwind -->
     <script src="js/tailwind-config.js"></script>
 
@@ -59,9 +63,9 @@
             <canvas id="elevox-canvas"></canvas>
 
             <div class="flex flex-col items-center max-w-3xl">
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-6" style="animation: fadeInUp 1s ease-out forwards;">
-                    <span class="gradient-text">Revolucionando a</span>
-                    <span class="block text-brand-blue">Acessibilidade</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight" style="animation: fadeInUp 1s ease-out forwards;">
+                    <span class="gradient-text block">Revolucionando a</span>
+                    <span class="gradient-text block">Acessibilidade</span>
                 </h1>
                 <p class="text-lg md:text-xl text-text-menu mb-10 max-w-xl" style="animation: fadeInUp 1.2s ease-out forwards; animation-delay: 0.2s;">
                     O Elevox é um elevador inteligente que integra comandos de voz e app móvel para garantir autonomia e inclusão a pessoas com deficiência.
@@ -355,125 +359,92 @@
                     </p>
                 </div>
 
-                <!-- Carrossel de Equipe -->
-                <div class="relative max-w-6xl mx-auto px-16">
-                    <!-- Botão Anterior -->
-                    <button id="team-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-brand-blue text-brand-blue hover:text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center group">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                    </button>
+                <!-- Carrossel de Equipe Infinito -->
+                <div class="team-gallery relative h-[600px] md:h-[550px] overflow-visible">
+                    <ul class="team-cards">
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/matheus%20costa.png?raw=true" alt="Matheus Costa" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Matheus Costa</h3>
+                            <p class="text-brand-blue mb-3">Idealizador | Gerente de Branding e Inovação</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/wisley%20anjos.jpeg?raw=true" alt="Wisley Anjos" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Wisley Anjos</h3>
+                            <p class="text-brand-blue mb-3">Gerente Geral de Desenvolvimento</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Eduardo%20Fran%C3%A7a.jpg?raw=true" alt="Eduardo França" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Eduardo França</h3>
+                            <p class="text-brand-blue mb-3">Gerente de Qualidade e Finanças</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Daniel%20Vieira.jpg?raw=true" alt="Daniel Vieira" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Daniel Vieira</h3>
+                            <p class="text-brand-blue mb-3">Gerente T&D</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://placehold.co/200x200/f8fafc/281dc2?text=ES" alt="Rodrigo Magalhães" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Rodrigo Magalhães</h3>
+                            <p class="text-brand-blue mb-3">Orientador</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/laura%20souza.png?raw=true" alt="Laura Souza" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Laura Souza</h3>
+                            <p class="text-brand-blue mb-3">Gerente de Pesquisa</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/jo%C3%A3o%20rezende.png?raw=true" alt="João Rezende" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">João Rezende</h3>
+                            <p class="text-brand-blue mb-3">Analista de Branding</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Larissa%20Freitas.jpg?raw=true" alt="Larissa Freitas" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Larissa Freitas</h3>
+                            <p class="text-brand-blue mb-3">Analista UI/UX</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://placehold.co/200x200/f8fafc/281dc2?text=IM" alt="Carlos Eduardo" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Carlos Eduardo</h3>
+                            <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://placehold.co/200x200/f8fafc/281dc2?text=JN" alt="Jhennyfer Gomes" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Jhennyfer Gomes</h3>
+                            <p class="text-brand-blue mb-3">Analista Finanças</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/israel%20oliveira.png?raw=true" alt="Israel Oliveira" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Israel Oliveira</h3>
+                            <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/leonardo%20ramos.png?raw=true" alt="Leonardo Ramos" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Leonardo Ramos</h3>
+                            <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Ayla%20Beatriz.jpg?raw=true" alt="Ayla Beatriz" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Ayla Beatriz</h3>
+                            <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
+                        </li>
+                        <li class="tech-card p-6 rounded-2xl text-center">
+                            <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Nadia%20Sugawara.jpg?raw=true" alt="Nadia Sugawara" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
+                            <h3 class="text-xl font-bold text-text-primary">Nadia Sugawara</h3>
+                            <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
+                        </li>
+                    </ul>
 
-                    <!-- Container do Carrossel -->
-                    <div class="overflow-hidden py-4">
-                        <div id="team-carousel" class="flex transition-transform duration-500 ease-in-out">
-                            <!-- Slide 1 (Membros 1-4) -->
-                            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/matheus%20costa.png?raw=true" alt="Matheus Costa" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Matheus Costa</h3>
-                                    <p class="text-brand-blue mb-3">Idealizador | Gerente de Branding e Inovação</p>     
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/wisley%20anjos.jpeg?raw=true" alt="Wisley Anjos" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Wisley Anjos</h3>
-                                    <p class="text-brand-blue mb-3">Gerente Geral de Desenvolvimento</p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Eduardo%20Fran%C3%A7a.jpg?raw=true" alt="Eduardo França" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Eduardo França</h3>
-                                    <p class="text-brand-blue mb-3">Gerente de Qualidade e Finanças</p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Daniel%20Vieira.jpg?raw=true" alt="Daniel Vieira" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Daniel Vieira</h3>
-                                    <p class="text-brand-blue mb-3">Gerente T&D</p>
-                                </div>
-                            </div>
-
-                            <!-- Slide 2 (Membros 5-8) -->
-                            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=ES" alt="Rodrigo Magalhães" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Rodrigo Magalhães</h3>
-                                    <p class="text-brand-blue mb-3">Orientador</p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/laura%20souza.png?raw=true" alt="Laura Souza" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Laura Souza</h3>
-                                    <p class="text-brand-blue mb-3">Gerente de Pesquisa</p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/jo%C3%A3o%20rezende.png?raw=true" alt="João Rezende" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">João Rezende</h3>
-                                    <p class="text-brand-blue mb-3">Analista de Branding</p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Larissa%20Freitas.jpg?raw=true" alt="Larissa Freitas" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Larissa Freitas</h3>
-                                    <p class="text-brand-blue mb-3">Analista UI/UX</p>
-                                </div>
-                            </div>
-
-                            <!-- Slide 3 (Membros 9-12) -->
-                            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=IM" alt="Carlos Eduardo" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Carlos Eduardo</h3>
-                                    <p class="text-brand-blue mb-3">Analista de Pesquisa </p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://placehold.co/200x200/f8fafc/281dc2?text=JN" alt="Jhennyfer Gomes" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Jhennyfer Gomes</h3>
-                                    <p class="text-brand-blue mb-3">Analista Finanças</p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/israel%20oliveira.png?raw=true" alt="Israel Oliveira" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Israel Oliveira</h3>
-                                    <p class="text-brand-blue mb-3">Analista de Pesquisa </p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/leonardo%20ramos.png?raw=true" alt="Leonardo Ramos" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Leonardo Ramos</h3>
-                                    <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
-                                </div>
-                            </div>
-
-                            <!-- Slide 4 (Membros 13-14) -->
-                            <div class="min-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-2">
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Ayla%20Beatriz.jpg?raw=true" alt="Ayla Beatriz" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Ayla Beatriz</h3>
-                                    <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center">
-                                    <img src="https://github.com/deskytop/elevox-website/blob/Main/assets/Nadia%20Sugawara.jpg?raw=true" alt="Nadia Sugawara" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-brand-blue/50">
-                                    <h3 class="text-xl font-bold text-text-primary">Nadia Sugawara</h3>
-                                    <p class="text-brand-blue mb-3">Analista de Pesquisa</p>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center opacity-0 pointer-events-none">
-                                    <div class="w-32 h-32 mx-auto mb-4"></div>
-                                </div>
-                                <div class="tech-card p-6 rounded-2xl text-center opacity-0 pointer-events-none">
-                                    <div class="w-32 h-32 mx-auto mb-4"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Botão Próximo -->
-                    <button id="team-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-brand-blue text-brand-blue hover:text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center group">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-
-                    <!-- Indicadores -->
-                    <div class="flex justify-center gap-2 mt-8">
-                        <button class="team-indicator w-3 h-3 rounded-full bg-brand-blue transition-all duration-300" data-slide="0"></button>
-                        <button class="team-indicator w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" data-slide="1"></button>
-                        <button class="team-indicator w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" data-slide="2"></button>
-                        <button class="team-indicator w-3 h-3 rounded-full bg-slate-300 transition-all duration-300" data-slide="3"></button>
+                    <div class="team-actions absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+                        <button class="team-prev bg-white hover:bg-brand-blue text-brand-blue hover:text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="team-next bg-white hover:bg-brand-blue text-brand-blue hover:text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -495,16 +466,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 border-t border-slate-200 mt-20"> <!-- Borda atualizada -->
+    <footer class="relative z-10 mt-20" style="background-color: #2c3573;">
         <div class="container mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
             <div class="mb-6 md:mb-0">
-                <span class="text-xl font-bold gradient-text">Elevox</span>
-                <p class="text-sm text-text-secondary">© 2025 Elevox. Todos os direitos reservados.</p>
+                <span class="text-xl font-bold" style="color: #bfc8ff;">Elevox</span>
+                <p class="text-sm text-white">© 2025 Elevox. Todos os direitos reservados.</p>
             </div>
             <div class="flex space-x-6">
-                <a href="#" class="text-text-secondary hover:text-text-primary transition-colors">Privacidade</a>
-                <a href="#" class="text-text-secondary hover:text-text-primary transition-colors">Documentação</a>
-                <a href="#" class="text-text-secondary hover:text-text-primary transition-colors">Imprensa</a>
+                <a href="#" class="text-white hover:text-gray-300 transition-colors">Privacidade</a>
+                <a href="#" class="text-white hover:text-gray-300 transition-colors">Documentação</a>
+                <a href="#" class="text-white hover:text-gray-300 transition-colors">Imprensa</a>
             </div>
         </div>
     </footer>
