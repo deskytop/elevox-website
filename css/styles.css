@@ -3,11 +3,18 @@
    =================================== */
 
 /* Estilos base (Tema Claro) */
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     background-color: var(--tw-bg-light);
     color: var(--tw-text-primary);
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 /* Canvas 3D */
@@ -209,7 +216,7 @@ img.rounded-lg {
     .team-gallery {
         position: relative;
         width: 100%;
-        height: 700px;
+        height: 650px;
         padding-bottom: 3rem;
     }
 
@@ -217,7 +224,7 @@ img.rounded-lg {
         position: absolute;
         width: 24rem;
         height: 28rem;
-        top: 50%;
+        top: 48%;
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 0;
@@ -265,7 +272,7 @@ img.rounded-lg {
     .team-actions {
         z-index: 100 !important;
         position: absolute !important;
-        bottom: -15px !important;
+        bottom: 15px !important;
     }
 }
 
@@ -274,16 +281,18 @@ img.rounded-lg {
     .team-gallery {
         position: relative;
         width: 100%;
-        height: 500px;
-        padding-bottom: 3rem;
+        max-width: 100vw;
+        height: 580px;
+        padding: 2rem 0 4rem 0;
         overflow: visible !important;
     }
 
     .team-cards {
         position: absolute;
         width: 18rem;
+        max-width: 90vw;
         height: 24rem;
-        top: 50%;
+        top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 0;
@@ -295,6 +304,7 @@ img.rounded-lg {
         padding: 1.5rem !important;
         margin: 0;
         width: 18rem;
+        max-width: 90vw;
         height: 24rem;
         position: absolute;
         top: 0;
@@ -328,23 +338,36 @@ img.rounded-lg {
     .team-actions {
         z-index: 100 !important;
         position: absolute !important;
-        bottom: -15px !important;
+        bottom: 30px !important;
     }
 }
 
 /* VERSÃO MOBILE PEQUENO (celulares) */
 @media (max-width: 480px) {
     .team-gallery {
-        height: 450px;
+        height: 520px;
+        max-width: 100vw;
+        padding: 2rem 0 4rem 0;
+        overflow: visible !important;
+    }
+
+    .team-cards {
+        top: 42%;
+    }
+
+    .team-actions {
+        bottom: 35px !important;
     }
 
     .team-cards {
         width: 16rem;
+        max-width: 90vw;
         height: 22rem;
     }
 
     .team-cards li {
         width: 16rem;
+        max-width: 90vw;
         height: 22rem;
         padding: 1rem !important;
     }
