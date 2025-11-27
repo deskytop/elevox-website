@@ -466,6 +466,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Menu Mobile ---
+    function initMobileMenu() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link, .mobile-menu-link-cta');
+
+        if (!mobileMenuButton || !mobileMenu || !mobileMenuClose) return;
+
+        // Abrir menu
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        });
+
+        // Fechar menu
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = ''; // Restaurar scroll
+        }
+
+        mobileMenuClose.addEventListener('click', closeMenu);
+
+        // Fechar ao clicar em um link
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+
+        // Fechar ao clicar fora do conteúdo
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                closeMenu();
+            }
+        });
+    }
+
     // Iniciar funções
     // init3D(); // Descomente para ativar partículas
     // animate(); // Descomente para ativar partículas
@@ -473,4 +511,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScroll();
     initTeamCarousel();
     initPrototypeCarousel();
+    initMobileMenu();
 });

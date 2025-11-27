@@ -45,13 +45,33 @@
                 <a href="#equipe" class="text-text-secondary hover:text-text-primary transition-colors">Equipe</a>
                 <a href="#contato" class="bg-brand-blue hover:bg-brand-blue-dark text-white px-6 py-2 rounded-md transition-colors">Contato</a>
             </div>
-            <!-- Botão Menu Móvel (simples) -->
+            <!-- Botão Menu Móvel -->
             <div class="md:hidden">
-                <button class="text-text-primary focus:outline-none"> <!-- Cor do ícone mudou -->
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <button id="mobile-menu-button" class="text-text-primary focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </nav>
+
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+            <div class="mobile-menu-content">
+                <button id="mobile-menu-close" class="mobile-menu-close">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <nav class="flex flex-col space-y-6 mt-12">
+                    <a href="#home" class="mobile-menu-link">Início</a>
+                    <a href="#projeto" class="mobile-menu-link">O Projeto</a>
+                    <a href="#tecnologia" class="mobile-menu-link">Tecnologia</a>
+                    <a href="#custos" class="mobile-menu-link">Custos</a>
+                    <a href="#melhorias" class="mobile-menu-link">Melhorias Futuras</a>
+                    <a href="#equipe" class="mobile-menu-link">Equipe</a>
+                    <a href="#contato" class="mobile-menu-link-cta">Contato</a>
+                </nav>
+            </div>
+        </div>
     </header>
 
     <!-- Conteúdo Principal -->
