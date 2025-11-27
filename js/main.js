@@ -281,11 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
             paused: true
         });
 
-        let currentTime = 0;
-        let lastTime = Date.now();
-        let autoplayEnabled = true;
-        let animationFrameId = null;
-
         function scrubTo(totalTime) {
             let progress = (totalTime - seamlessLoop.duration() * iteration) / seamlessLoop.duration();
             if (progress > 1) {
@@ -297,49 +292,13 @@ document.addEventListener('DOMContentLoaded', () => {
             scrub.invalidate().restart();
         }
 
-        // Auto-play usando requestAnimationFrame para sincronização correta
-        function autoplay() {
-            if (!autoplayEnabled) {
-                animationFrameId = requestAnimationFrame(autoplay);
-                return;
-            }
+        // Auto-play: avança automaticamente a cada 5 segundos
+        setInterval(() => {
+            scrubTo(scrub.vars.totalTime + spacing);
+        }, 5000);
 
-            const now = Date.now();
-            const elapsed = now - lastTime;
-
-            if (elapsed >= 5000) {
-                currentTime += spacing;
-                scrubTo(currentTime);
-                lastTime = now;
-            }
-
-            animationFrameId = requestAnimationFrame(autoplay);
-        }
-
-        autoplay();
-
-        // Pausar quando a página fica invisível
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden) {
-                autoplayEnabled = false;
-            } else {
-                autoplayEnabled = true;
-                lastTime = Date.now(); // Reset timer ao voltar
-            }
-        });
-
-        // Botões manuais
-        document.querySelector(".team-next").addEventListener("click", () => {
-            currentTime += spacing;
-            scrubTo(currentTime);
-            lastTime = Date.now(); // Reset timer
-        });
-
-        document.querySelector(".team-prev").addEventListener("click", () => {
-            currentTime -= spacing;
-            scrubTo(currentTime);
-            lastTime = Date.now(); // Reset timer
-        });
+        document.querySelector(".team-next").addEventListener("click", () => scrubTo(scrub.vars.totalTime + spacing));
+        document.querySelector(".team-prev").addEventListener("click", () => scrubTo(scrub.vars.totalTime - spacing));
 
         function buildSeamlessLoop(items, spacing) {
             let overlap = Math.ceil(1 / spacing);
