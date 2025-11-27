@@ -139,6 +139,15 @@ img[alt="Matheus Costa"] {
     object-position: center 30% !important;
 }
 
+img[alt="Carlos Eduardo"] {
+    object-position: center 30% !important;
+}
+
+img[alt="Jhennyfer Gomes"] {
+    object-position: center 50% !important;
+}
+
+
 /* Imagens gerais - manter proporção */
 img.rounded-lg {
     object-fit: contain;
