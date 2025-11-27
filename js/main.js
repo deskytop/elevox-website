@@ -282,6 +282,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         let currentTime = 0;
+        let lastTime = Date.now();
+        let autoplayEnabled = true;
+        let animationFrameId = null;
 
         function scrubTo(totalTime) {
             let progress = (totalTime - seamlessLoop.duration() * iteration) / seamlessLoop.duration();
@@ -290,36 +293,52 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (progress < 0) {
                 iteration--;
             }
-            currentTime = totalTime;
             scrub.vars.totalTime = snap((iteration + progress) * seamlessLoop.duration());
             scrub.invalidate().restart();
         }
 
-        // Auto-play: avança automaticamente a cada 5 segundos
-        let autoplayInterval = setInterval(() => {
-            currentTime += spacing;
-            scrubTo(currentTime);
-        }, 5000);
+        // Auto-play usando requestAnimationFrame para sincronização correta
+        function autoplay() {
+            if (!autoplayEnabled) {
+                animationFrameId = requestAnimationFrame(autoplay);
+                return;
+            }
 
-        // Botões manuais (pausam o autoplay temporariamente e reiniciam)
-        document.querySelector(".team-next").addEventListener("click", () => {
-            clearInterval(autoplayInterval);
-            currentTime += spacing;
-            scrubTo(currentTime);
-            autoplayInterval = setInterval(() => {
+            const now = Date.now();
+            const elapsed = now - lastTime;
+
+            if (elapsed >= 5000) {
                 currentTime += spacing;
                 scrubTo(currentTime);
-            }, 5000);
+                lastTime = now;
+            }
+
+            animationFrameId = requestAnimationFrame(autoplay);
+        }
+
+        autoplay();
+
+        // Pausar quando a página fica invisível
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                autoplayEnabled = false;
+            } else {
+                autoplayEnabled = true;
+                lastTime = Date.now(); // Reset timer ao voltar
+            }
+        });
+
+        // Botões manuais
+        document.querySelector(".team-next").addEventListener("click", () => {
+            currentTime += spacing;
+            scrubTo(currentTime);
+            lastTime = Date.now(); // Reset timer
         });
 
         document.querySelector(".team-prev").addEventListener("click", () => {
-            clearInterval(autoplayInterval);
             currentTime -= spacing;
             scrubTo(currentTime);
-            autoplayInterval = setInterval(() => {
-                currentTime += spacing;
-                scrubTo(currentTime);
-            }, 5000);
+            lastTime = Date.now(); // Reset timer
         });
 
         function buildSeamlessLoop(items, spacing) {
