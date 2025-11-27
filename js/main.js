@@ -270,9 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fade in suave das imagens
         gsap.to(".team-cards li img", { opacity: 1, delay: 0.1 });
 
-        let iteration = 0;
+        let currentIndex = 0;
         const spacing = 0.06;
-        const snap = gsap.utils.snap(spacing);
         const seamlessLoop = buildSeamlessLoop(cards, spacing);
         const scrub = gsap.to(seamlessLoop, {
             totalTime: 0,
@@ -281,24 +280,31 @@ document.addEventListener('DOMContentLoaded', () => {
             paused: true
         });
 
-        function scrubTo(totalTime) {
-            let progress = (totalTime - seamlessLoop.duration() * iteration) / seamlessLoop.duration();
-            if (progress > 1) {
-                iteration++;
-            } else if (progress < 0) {
-                iteration--;
-            }
-            scrub.vars.totalTime = snap((iteration + progress) * seamlessLoop.duration());
+        function goToIndex(index) {
+            // Normaliza o índice para estar sempre entre 0 e cards.length-1
+            index = ((index % cards.length) + cards.length) % cards.length;
+            currentIndex = index;
+
+            const totalTime = currentIndex * spacing;
+            scrub.vars.totalTime = totalTime;
             scrub.invalidate().restart();
+        }
+
+        function next() {
+            goToIndex(currentIndex + 1);
+        }
+
+        function prev() {
+            goToIndex(currentIndex - 1);
         }
 
         // Auto-play: avança automaticamente a cada 5 segundos
         setInterval(() => {
-            scrubTo(scrub.vars.totalTime + spacing);
+            next();
         }, 5000);
 
-        document.querySelector(".team-next").addEventListener("click", () => scrubTo(scrub.vars.totalTime + spacing));
-        document.querySelector(".team-prev").addEventListener("click", () => scrubTo(scrub.vars.totalTime - spacing));
+        document.querySelector(".team-next").addEventListener("click", next);
+        document.querySelector(".team-prev").addEventListener("click", prev);
 
         function buildSeamlessLoop(items, spacing) {
             let overlap = Math.ceil(1 / spacing);
